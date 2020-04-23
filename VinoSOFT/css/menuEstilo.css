@@ -1,0 +1,10 @@
+﻿div.menuClass > ul > li
+{
+    display: inline-block;
+    list-style: none;
+}
+
+div.menuClass ul li ul
+{
+    display: none;
+}

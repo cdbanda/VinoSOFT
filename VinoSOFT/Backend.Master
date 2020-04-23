@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Backend.master.cs" Inherits="VinoSOFT.Backend" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="headBackend" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="form1" runat="server">
+    <div class="container">
+    <!--static navbar-->
+    <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Cambiar navegacion</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="AdminDefault.aspx">VinoSOFT</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                           <li runat="server" id="ItemSeguridad" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Seguridad <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class='<%=isActive(new string[] {"AdminFamiliasList.aspx", "AdminFamiliasForm.aspx"})%>'><a href="AdminFamiliasList.aspx">Administrar Roles</a></li>
+                                    <li class='<%=isActive(new string[] {"AdminBackup.aspx"})%>'><a href="AdminBackup.aspx">Administrar Backups</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                       </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
+                <asp:ContentPlaceHolder ID="ContenidoBackendMasterPage" runat="server">
+
+                </asp:ContentPlaceHolder>
+        </div>
+        <div class="container">
+            <hr />
+
+            <footer>
+                <p class="pull-right">&copy; 2019 - VinoSOFT S.A.</p>
+            </footer>
+        </div>
+    </form>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap 3.4.1 instalado con Nugget-->
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

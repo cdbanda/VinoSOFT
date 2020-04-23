@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="VinoSOFT.MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Src="~/mensajesUC.ascx" TagPrefix="uc1" TagName="mensajesUC" %>
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>VinoSOFT</title>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="css/estilosPersonalizados.css" rel="stylesheet" />
+
+    <!-- Bootstrap 3.4.1 instalado con Nugget-->
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <!-- Google traductor -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'es', multilanguajePage: true }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer="defer"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnablePartialRendering="true" runat="server"></asp:ScriptManager>
+
+
+<div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Default.aspx">VinoSoft S.A.</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                 <ContentTemplate>
+                <asp:Menu ID="menuMaster" runat="server" Orientation="Horizontal" RenderingMode="List"
+                    IncludeStyleBlock="false" StaticMenuStyle-CssClass="nav navbar-nav" DynamicMenuStyle-CssClass="dropdown-menu">
+                </asp:Menu>
+                </ContentTemplate>
+                </asp:UpdatePanel>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+              <span id="google_translate_element"></span>
+              </li>
+              <li><a href="Registracion.aspx"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+              <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión<b class="caret"></b></a>
+                     <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <li>
+                           <div class="row">
+                              <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label class="sr-only" for="exampleInputEmail2">Usuario</label>
+                                        <asp:TextBox ID="impEmail" runat="server" CssClass="form-control" ToolTip="Ingrese Email" Placeholder="Email"></asp:TextBox>
+                                                                                            
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
+                                         <asp:TextBox ID="impPassword" runat="server" CssClass="form-control" ToolTip="Ingrese Contraseña" Placeholder="Contraseña"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Button ID="btnIniciar" runat="server" Text="Iniciar" CssClass="btn btn-success btn-block" />
+                                    </div>
+                                    <div>
+                                        <label><a href="#">Recuperar Contraseña</a></label>
+                                    </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </li>
+             </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ModalPopupExtender -->
+        <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+    <asp:ModalPopupExtender ID="modalPopMaster" runat="server" PopupControlID="panelModal" 
+        CancelControlID="btnClose" TargetControlID="lnkDummy">
+    </asp:ModalPopupExtender>
+
+<asp:UpdatePanel ID="updatePanelModal" runat="server" UpdateMode="Conditional">
+     <ContentTemplate>
+    <asp:Panel ID="panelModal" runat="server" align="center" style ="display:none">
+        This is an ASP.Net AJAX ModalPopupExtender Example<br />
+        <asp:Button ID="btnClose" runat="server" Text="Close" />
+    </asp:Panel>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+<!-- ModalPopupExtender -->
+
+
+<!-- contenido para las demas paginas -->
+<asp:PlaceHolder ID="frontContenido" Visible="true" runat="server">
+        <asp:ContentPlaceHolder ID="ContenidoMasterPage" runat="server">
+
+        </asp:ContentPlaceHolder>
+</asp:PlaceHolder>
+<!-- FOOTER -->
+        
+        <footer>
+            <div class="container">
+            <p>
+                <span><a href="TerminosYCondiciones.aspx">Terminos y condiciones</a></span>
+                <span> - </span>
+                <span><a href="PoliticasPrivacidad.aspx">Politicas de privacidad</a></span>
+                <span> - </span>
+                <span>2019 - VinoSOFT S.A.</span>
+            </p>
+            </div>
+        </footer>
+</form>
+
+</body>
+</html>
